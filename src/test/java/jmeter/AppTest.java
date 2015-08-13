@@ -62,7 +62,7 @@ public class AppTest {
             new File(jmeterHome.getPath() + File.separator + "bin" + File.separator + "jmeter.properties").getPath();
         JMeterUtils.loadJMeterProperties(jmeterProperties);
         // Dirty hack to make sure JMeter ClassFinder does find the function classes. Otherwise functions in .jmx files
-        // wont' work
+        // wont' work. See https://bz.apache.org/bugzilla/show_bug.cgi?id=50585
         JMeterUtils.setProperty("search_paths", System.getProperty("java.class.path"));
         JMeterUtils.initLocale();
         jmeterTree = new HashTree();
