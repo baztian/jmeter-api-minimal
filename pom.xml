@@ -4,6 +4,10 @@
     <groupId>org.baztian</groupId>
     <artifactId>jmeter-api-minimal</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <inceptionYear>2015</inceptionYear>
+    <organization>
+        <name>Bastian Bowe</name>
+    </organization>
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -93,4 +97,25 @@
             <version>2.3</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.8</version>
+                <configuration>
+                    <licenseName>apache_v2</licenseName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>first</id>
+                        <goals>
+                            <goal>update-file-header</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
