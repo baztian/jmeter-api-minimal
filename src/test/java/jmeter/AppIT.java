@@ -44,7 +44,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AppTest {
+public class AppIT {
 
     private StandardJMeterEngine jmeter;
 
@@ -54,7 +54,7 @@ public class AppTest {
     @Before
     public void setUp() {
         jmeter = new StandardJMeterEngine();
-        File jmeterHome = new File(System.getProperty("jmeterHome", "target" + File.separator + "apache-jmeter"));
+        File jmeterHome = new File(System.getProperty("jmeterHome", "target" + File.separator + "jmeter"));
         if (!jmeterHome.exists()) {
             throw new IllegalStateException("JMeter home folder not found: " + jmeterHome.getPath());
         }
