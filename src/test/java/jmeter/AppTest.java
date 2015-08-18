@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UncheckedIOException;
 
 import org.apache.jmeter.control.LoopController;
 import org.apache.jmeter.control.gui.TestPlanGui;
@@ -55,7 +56,7 @@ public class AppTest {
         jmeter = new StandardJMeterEngine();
         File jmeterHome = new File(System.getProperty("jmeterHome", "target" + File.separator + "apache-jmeter"));
         if (!jmeterHome.exists()) {
-            throw new RuntimeException("JMeter home folder not found: " + jmeterHome.getPath());
+            throw new IllegalStateException("JMeter home folder not found: " + jmeterHome.getPath());
         }
         JMeterUtils.setJMeterHome(jmeterHome.getPath());
         String jmeterProperties =
@@ -75,7 +76,7 @@ public class AppTest {
         try (OutputStream outputStream = new FileOutputStream(jmxFileName)) {
             SaveService.saveTree(jmeterTree, outputStream);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new UncheckedIOException(e);
         }
         jmeter.configure(jmeterTree);
         jmeter.run();
